@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="mx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Materias</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <%- include('secciones/librerias.html') %>
+</head>
+
+<body>
+    <%- include('secciones/menu.html') %>
+    <!-- <%- include('secciones/header.html') %> -->
+    <div id="principal">
+        <div id="contenido" style="overflow-x: hidden;">
+            <div class="cont-form" id="formulario" style="display: block;">
+                <form action="/materias/modificar/<%=fila.ClaveMateria %>" method="post">
+                    <div class="cont-inputs">
+                        <div class="input-box">
+                            <input type="text" name="tfClaveMateria" id="tfClaveMateria" value="<%=fila.ClaveMateria%>">
+                            <label>Clave de materia</label>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" name="tfNombre" id="tfNombre" value="<%=fila.Nombre%>" >
+                            <label>Nombre</label>
+                        </div>
+                        <div class="input-box">
+                            <select name="tfCuatrimestre">
+                                <option selected><%=fila.Cuatrimestre%></option>
+                                <option value="7 mo">7 Cuatrimestre</option>
+                                <option value="8 vo">8 Cuatrimestre</option>
+                                <option value="9 no">9 Cuatrimestre</option>
+                                <option value="10 no">10 Cuatrimestre</option>
+                            </select>
+                            <label>Cuatrimestre</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+                </form>
+            </div>    
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Clave Materia</th>
+                        <th>Nombre</th>
+                        <th>Cuatrimestre</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% 
+                        for(var i =0; i<data.length; i++ ) {
+                    %>
+                    <tr>
+                        <td><%= data[i].ClaveMateria %></td>
+                        <td><%= data[i].Nombre %></td>
+                        <td><%= data[i].Cuatrimestre %></td>
+                        <td>
+                            <form action="/materias/editar" method="post">
+                                <input type="hidden" name="tfClaveMateria" value="<%=data[i].ClaveMateria%>"/>
+                                <button type="submit" class="btn btn-editar">Editar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="/materias/eliminar/<%=data[i].ClaveMateria%>" class="btn btn-eliminar">Eliminar</a>
+                        </td>
+                    </tr>
+                    <%
+                    }
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<%- include('secciones/scripts.html') %>
+</body>
+
+</html>

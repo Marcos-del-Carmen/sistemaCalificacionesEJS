@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="mx">
+
+<head>
+    <title>
+        Tutorial CSS de DWP
+    </title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aquí debería ir una etiqueta de apertura de comentario para el include, si es necesario. -->
+    <%- include('secciones/librerias.html') %>
+
+       
+</head>
+
+<body>
+    <%- include('secciones/menu.html') %>
+        <!-- <%- include('secciones/header.html') %> -->
+
+
+        <div id="principal">
+            <div id="contenido" style="overflow-x: hidden;"> <!-- Faltaba el símbolo de apertura en esta línea -->
+                <button id="toggleForm" class="btn btn-primary mt-2">Mostrar Formulario</button>
+
+                <div class="cont-form" id="formulario">
+                    <form action="/alumnos/agregar" method="post">
+                        <div class="cont-inputs">
+                            <div class="input-box">
+                                <input type="text" name="tfMatricula" id="tfMatricula">
+                                <label>Matricula</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfNombre" id="tfNombre" >
+                                <label>Nombre</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfPaterno" id="tfPaterno" >
+                                <label>Paterno</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfMaterno" id="tfMaterno" >
+                                <label>Materno</label>
+                            </div>
+                            <div class="input-box">
+                                <select name="tfSexo">
+                                    <option selected>- Selecciona -</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+                                <label for=>Sexo</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="date" name="tfFechaNac">
+                                <label>Fecha Nacimiento</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfTelefono">
+                                <label>Telefono</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfDireccion">
+                                <label>Direccción</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="email" name="tfCorreo">
+                                <label>Correo</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+                    </form>  
+                </div>
+
+
+
+                <div class="col col-8">
+
+                    <div class="container">
+                        <h2>Tabla de Alumnos</h2>
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Matricula</th>
+                                    <th>Nombre completo</th>
+                                    <th>Género</th>
+                                    <th>Fecha Nacimiento</th>
+                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
+                                    <th>Correo</th>
+                                    <th colspan="2">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var i=0; i<data.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= data[i].Matricula %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].Nombre %>
+                                                <%= data[i].Paterno %>
+                                                    <%= data[i].Materno %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].Sexo %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].FechaNac %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].Telefono %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].Direccion %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].Correo %>
+                                        </td>
+                                        <td class="align-middle">
+
+                                            <form action="/alumnos/editar" method="post" class="d-inline">
+                                                <input type="hidden" name="tfMatricula"
+                                                    value="<%= data[i].Matricula %>" />
+                                                <button type="submit" class="btn btn-editar">
+                                                    <i class="fas fa-pencil-alt"></i> Editar
+                                                </button>
+                                            </form>
+
+                                        </td>
+                                        <td>
+                                            <a href="/alumnos/eliminar/<%= data[i].Matricula %>"
+                                                class="btn btn-eliminar btn-as-link">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>    
+
+                <%- include('secciones/scripts.html') %>
+</body>
+<script>
+    document.getElementById("toggleForm").addEventListener("click", function () {
+        var formularioDiv = document.getElementById("formulario");
+        var toggleButton = document.getElementById("toggleForm");
+
+        if (formularioDiv.style.display === "none") {
+            formularioDiv.style.display = "block";
+            toggleButton.textContent = "Ocultar Formulario";
+        } else {
+            formularioDiv.style.display = "none";
+            toggleButton.textContent = "Mostrar Formulario";
+        }
+    });
+</script>
+
+</html>

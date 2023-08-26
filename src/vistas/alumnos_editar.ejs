@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar alumno</title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <%- include('secciones/librerias.html') %>
+</head>
+
+<body>
+    <%- include('secciones/menu.html') %>
+        <!-- <%- include('secciones/header.html') %> -->
+        <div id="principal">
+            <div id="contenido">
+                <div class="cont-form">
+                    <form action="/alumnos/modificar/<%=fila.Matricula %>" method="post">
+                        <div class="cont-inputs">
+                            <div class="input-box">
+                                <input type="text" name="tfMatricula" id="tfMatricula" value="<%= fila.Matricula %>">
+                                <label>Matricula</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfNombre" id="tfNombre" value="<%= fila.Nombre %>">
+                                <label>Nombre</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfPaterno" id="tfPaterno" value="<%= fila.Paterno %>">
+                                <label>Paterno</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfMaterno" id="tfMaterno" value="<%= fila.Materno %>">
+                                <label>Materno</label>
+                            </div>
+                            <div class="input-box">
+                                <select name="tfSexo">
+                                    <option selected><%= fila.Sexo %></option>
+                                    <option value="F">Femenino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+                                <label for>Sexo</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="date" name="tfFechaNac" value="<%= fila.FechaNac.toISOString().substr(0, 10) %>">
+                                <label>Fecha Nacimiento</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfTelefono" value="<%= fila.Telefono %>">
+                                <label>Telefono</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" name="tfDireccion" value="<%= fila.Direccion %>">
+                                <label>Direccción</label>
+                            </div>
+                            <div class="input-box">
+                                <input type="email" name="tfCorreo" value="<%= fila.Correo %>">
+                                <label>Correo</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Modificar</button>
+                    </form>  
+                </div>
+                <div class="col col-7">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Matricula</th>
+                                <th>Nombre</th>
+                                <th>Paterno</th>
+                                <th>Materno</th>
+                                <th>Género</th>
+                                <th>Fecha Nacimiento</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                                <th>Correo</th>
+    
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<data.length; i++ ) { %>
+                                <tr>
+                                    <td>
+                                        <%= data[i].Matricula %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Nombre %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Paterno %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Materno %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Sexo %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].FechaNac.toLocaleDateString('es-MX') %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Telefono %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Direccion %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].Correo %>
+                                    </td>
+                                    <td>
+                                        <form action="/alumnos/editar" method="post">
+                                            <input type="hidden" name="tfMatricula" value="<%= data[i].Matricula%>" />
+                                            <button type="submit" class="btn btn-editar">Editar</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <a href="/alumnos/eliminar/<%=data[i].Matricula%>"
+                                            class="btn btn-eliminar">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <%- include('secciones/scripts.html') %>
+</body>
+
+</html>

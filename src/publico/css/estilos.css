@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    /* overflow: auto; */
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background: #0075b1;
+    color: #fff;
+}
+
+#contenido {
+    width: 1200px;
+    margin: 0px auto;
+
+}
+
+#cabecera {
+    position: fixed;
+    height: 50px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    background-color: crimson;
+    overflow: hidden;
+}
+
+.linea {
+    font-size: 150%;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+
+#contenido {
+    /* position: fixed; */
+    left: 20px;
+    right: 20px;
+    top: 0px;
+    /* bottom: 60px; */
+    border: 2px solid Dcrimson;
+    background-color: white;
+    overflow: auto;
+    /* margin: 10px auto; */
+    padding: 10px;
+}
+
+#pie {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 50px;
+    margin: 5px;
+    text-align: justify;
+    background-color: crimson;
+    color: white;
+}
+
+#pie .linea {
+    font-size: 100%;
+    line-height: 50px;
+}
+
+
+.body-login {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background: linear-gradient(0deg, #1b1e26 6%, #303440 95%);
+    color: #fff;
+    overflow-y: hidden;
+}
+
+.login {
+    width: 330px;
+    height: 270px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #15171d;
+    position: relative;
+}
+
+.login::before,
+.login__circuit-mask {
+    content: '';
+    width: 682px;
+    height: 514px;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    display: block;
+}
+
+
+.login::before {
+    background: url(../img/bg-circuito.svg);
+}
+
+.login__circuit-mask {
+    -webkit-mask: url(../img/bg-circuito.svg);
+    mask: url(../img/bg-circuito.svg);
+    display: grid;
+    place-items: center;
+}
+
+.login__circuit-mask::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #00f0ff;
+    border-radius: 50%;
+    animation: onda 5s infinite;
+}
+
+@keyframes onda {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(7);
+    }
+}
+
+.login__heading {
+    text-align: center;
+    font-size: 1.6em;
+}
+
+/* Estilos generales para el formulario */
+.datos {
+    width: 290px;
+    border-radius: 5px;
+}
+
+/* Estilos para los campos del formulario */
+.datos label {
+    display: block;
+}
+
+.datos input[type="text"],
+.datos input[type="password"] {
+    width: 100%;
+    height: 35px;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    background: #2a2e39;
+    color: #fff;
+    border: nonde;
+}
+
+.cont__btn-login {
+    display: flex;
+    /* Utilizamos flexbox para alinear el contenido */
+    justify-content: flex-end;
+    /* Alineamos el botón hacia la derecha */
+}
+
+/* Estilos para el botón de enviar */
+.login input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 3s;
+}
+
+.login input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.cont-a {
+    width: 300px;
+    position: absolute;
+    bottom: 150px;
+}
+
+.cont-a a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    transition: 2s;
+}
+
+.cont-a a:hover {
+    color: #00f0ff;
+}
+
+/* Estilos del formulario */
+
+/* Estilos para el formulario de alumnos */
+.form__alumnos {
+    max-width: 250px;
+    margin: 0px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form__alumnos form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__alumnos input[type="text"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form__alumnos button[type="submit"] {
+    width: 100px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.form__alumnos button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: #3586ff;
+    height: 80px;
+    bottom: 0px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .social_icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0px;
+    flex-wrap: wrap;
+}
+
+footer .social_icon li {
+    list-style: none;
+}
+
+footer .social_icon li a {
+    font-size: 2em;
+    color: #fff;
+    margin: 0px 10px;
+    display: inline-block;
+    transition: .5s;
+}
+
+footer .social_icon li a:hover {
+    transform: translateY(-10px);
+}
+
+footer p {
+    color: #fff;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/**pie de pagina**/
+.waves {
+    position: absolute;
+    top: -80px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    background: url(../img/wave.png);
+    background-size: 1000px 80px;
+    animation: animateWave 4s linear infinite;
+}
+
+.waves#wave1 {
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0px;
+    animation: animateWave 4s linear infinite;
+}
+
+.waves#wave2 {
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 0px;
+    animation: animateWave_02 4s linear infinite;
+}
+
+.waves#wave3 {
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 10px;
+    animation: animateWave 3s linear infinite;
+}
+
+.waves#wave4 {
+    z-index: 999;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animateWave_02 3s linear infinite;
+}
+
+@keyframes animateWave {
+    0% {
+        background-position-x: 1000px;
+    }
+
+    100% {
+        background-position-x: 0px;
+    }
+}
+
+@keyframes animateWave_02 {
+    0% {
+        background-position-x: 0px;
+    }
+
+    100% {
+        background-position-x: 1000px;
+    }
+}
+
+
+
+/* ESTILOS DE MENU */
+
+:root {
+    --clr: #14161e;
+}
+
+.siderbar {
+    z-index: 1;
+    position: fixed;
+    width: 80px;
+    height: 100vh;
+    background: var(--clr);
+    transition: 0.5s;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.siderbar.active {
+    width: 370px;
+}
+
+.siderbar ul {
+    position: relative;
+    height: 100vh;
+}
+
+.siderbar ul li {
+    position: relative;
+    list-style: none;
+}
+
+.siderbar ul li.active {
+    background-color: #fff;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px
+}
+
+.siderbar ul li.active::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 5px 5px 0px 5px #fff;
+    background: transparent;
+}
+
+.siderbar ul li.active::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 5px -5px 0px 5px #fff;
+    background: transparent;
+}
+
+.siderbar ul li.logo {
+    margin-bottom: 20px;
+}
+
+.siderbar ul li.logo .icon {
+    font-size: 2em;
+    color: #fff;
+}
+
+.siderbar ul li.logo .text {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #fff;
+}
+
+.siderbar ul li a {
+    position: relative;
+    display: flex;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: auto;
+    align-items: center;
+    height: 70px;
+    /* justify-content: center; */
+    /* align-items: center; */
+    align-content: center;
+}
+
+.siderbar ul li a .icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-width: 60px;
+    height: 30px;
+    font-size: 1.5em;
+    color: #fff;
+    transition: .5s;
+    padding-left: 10px;
+}
+
+.siderbar ul li a .text {
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    color: #fff;
+    padding-left: 0.05em;
+    transition: 0.5s;
+    padding-left: 10px;
+}
+
+.siderbar input[type="submit"] {
+    background: #ece7e700;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+.siderbar ul li.active a .icon {
+    color: #fff;
+}
+
+.siderbar ul li.active a input[type="submit"] {
+    color: var(--bg);
+}
+
+.siderbar ul li:hover a .icon,
+.siderbar ul li:hover a .text,
+.siderbar ul li:hover a input[type="submit"] {
+    color: var(--bg);
+}
+
+.siderbar ul li.active a .icon::before {
+    content: '';
+    position: absolute;
+    inset: -16px 5px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--bg);
+    border-radius: 50%;
+    transition: 0.5s;
+
+}
+
+.siderbar ul li:hover.active a .icon::before {
+    background-color: var(--clr);
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.imgBx {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.imgBx img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menuToggle {
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+.menuToggle::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    transform: translateY(-9px);
+    transition: .5s;
+    box-shadow: 0px 9px 0px #fff;
+}
+
+.menuToggle::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    transform: translateY(9px);
+    transition: .5s;
+}
+
+.menuToggle.active::before {
+    transform: translateY(0px) rotate(45deg);
+    box-shadow: 0px 0px 0px #fff;
+}
+
+.menuToggle.active::after {
+    transform: translateY(0px) rotate(-45deg);
+}
+
+.text-ini input[type="submit"] {
+    font-size: 1.3em;
+    margin-top: 24px;
+}
+
+/* FIN DE ESTILOS DE MENU */
+
+.cont-form {
+    max-width: 1100px;
+}
+
+.cont-form {
+    max-width: 1100px;
+    margin: 0px auto;
+    padding: 25px 30px;
+}
+
+.cont-form .cont-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-box {
+    width: calc(100% / 3 - 20px);
+}
+
+.input-box input,
+.input-box select {
+    height: 40px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    outline: none;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-box label {
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    background: #fff;
+    color: #7a7a7a;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .3s;
+}
+
+#formulario {
+    display: none;
+}
+
+/* Estilos para la tabla */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.custom-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+/* Estilos para los botones */
+.btn-editar {
+    background-color: #ffc107;
+    color: #222;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Estilos para los enlaces como botones */
+.btn-as-link {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-as-link:hover {
+    text-decoration: none;
+}
+
+/* Estilos para la tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+/* Estilos para el encabezado de la tabla */
+.table thead th {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Estilos para las celdas de datos */
+.table tbody td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* Cambiar color de fondo de las filas de manera alternada */
+.table tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+    /* Fondo gris para filas pares */
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: white;
+    /* Fondo blanco para filas impares */
+}

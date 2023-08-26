@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>
+        Tutorial CSS de DWP
+    </title>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aquí debería ir una etiqueta de apertura de comentario para el include, si es necesario. -->
+    <%- include('secciones/librerias.html') %>
+</head>
+
+<body>
+    <!-- <%- include('secciones/header.html') %> -->
+    <%- include('secciones/menu.html') %>
+    <div id="principal">
+        <div id="contenido" style="overflow-x: hidden;">
+            <!-- Faltaba el símbolo de apertura en esta línea -->
+            <button id="toggleForm" class="btn btn-primary mt-2">Mostrar Formulario</button>
+                <div class="cont-form" id="formulario">
+                    <form action="/materias/agregar" method="post">
+                        <div class="cont-inputs">
+
+                            <div class="input-box">
+                                <input type="text" name="tfClaveMateria" id="tfClaveMateria" placeholder=" Clave materias" class="f">
+                                <label>Clave de materia</label>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="text" name="tfNombre" id="tfNombre" placeholder="Nombre" class="for">
+                                <label>Nombre</label>
+                            </div>
+                            <div class="input-box">
+                                <select name="tfCuatrimestre">
+                                    <option selected>- Selecciona -</option>
+                                    <option value="7 Cuatrimestre">7 Cuatrimestre</option>
+                                    <option value="8 Cuatrimestre">8 Cuatrimestre</option>
+                                    <option value="9 Cuatrimestre">9 Cuatrimestre</option>
+                                    <option value="10 Cuatrimestre">10 Cuatrimestre</option>
+                                </select>
+                                <label>Cuatrimestre</label>
+                            </div>
+                            
+                        </div>
+                        
+
+                        <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+                    </form>
+                    
+                </div>    
+                <div class="col col-8">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Clave Materia</th>
+                                <th>Nombre</th>
+                                <th>Cuatrimestre</th>
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<data.length; i++) { %>
+                            <tr>
+                                <td><%= data[i].ClaveMateria %></td>
+                                <td><%= data[i].Nombre %></td>
+                                <td><%= data[i].Cuatrimestre %></td>
+
+                                <td width="50">
+                                    <form action="/materias/editar" method="post">
+                                        <input type="hidden" name="tfClaveMateria"
+                                            value="<%= data[i].ClaveMateria %>" />
+                                        <button type="submit" class="btn btn-editar">Editar</button>
+                                    </form>
+                                </td>
+                                <td width="50">
+                                    <a href="/materias/eliminar/<%= data[i].ClaveMateria %>"
+                                        class="btn btn-eliminar">Eliminar</a>
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            
+        </div>
+    </div>
+
+    <%- include('secciones/scripts.html') %>
+</body>
+<script>
+    document.getElementById("toggleForm").addEventListener("click", function () {
+        var formularioDiv = document.getElementById("formulario");
+        var toggleButton = document.getElementById("toggleForm");
+
+        if (formularioDiv.style.display === "none") {
+            formularioDiv.style.display = "block";
+            toggleButton.textContent = "Ocultar Formulario";
+        } else {
+            formularioDiv.style.display = "none";
+            toggleButton.textContent = "Mostrar Formulario";
+        }
+    });
+</script>
+
+</html>
